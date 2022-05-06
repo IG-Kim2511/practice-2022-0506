@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100;200;300;400;500;600;700&family=Mochiy+Pop+One&display=swap');
+
+
+
+// 🍀function
+
+$blue : #d61319;
+$black : #333;
+$white : #fff;
+$gold : gold;
+$light-color : #666;
+$light-bg : #eee;
+
+$border : 0.2rem solid $black;
+$box-shadow : 0 .5rem 1rem rgba(0,0,0, 0.2);
+
+// 🍀css320
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 2rem;
+    
+}
+
+// 🍀css2022
+@keyframes fadeIn{
+    0%{
+        transform: scale(1.5);
+        opacity: 0;    
+    }
+}
+
+
+// 🥚universal
+*{
+    font-family: 'Mochiy Pop One', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+html{
+    overflow-x: hidden;
+    font-size: 62.5%;
+
+    // scrollbar background
+    &::-webkit-scrollbar-track{
+        background: $light-bg;
+    }
+
+    // scrollbar color
+    &::-webkit-scrollbar-thumb{
+        background: $blue;
+        border-radius: 5rem
+    };
+}
