@@ -106,3 +106,126 @@ section{
 // index.html
 
 // header-navbar -start
+
+.header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+    background: $blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 9%;
+
+    .logo{
+        font-size: 2.5rem;
+        color: $white;
+        font-weight: bolder;
+
+        i{
+            color: $gold;
+        }
+    }
+
+    .search-form{
+        height: 5rem;
+        width: 50rem;
+
+        border-radius: 5rem;
+        padding: 0 2rem;
+        display: flex;
+        align-items: center;
+        background: $white;
+
+        input {
+            // width: 100rem;
+            padding-right: 1rem;
+            font-size: 1.7rem;
+
+            // text transform : none
+            
+            text-transform: none;
+            
+            color: $light-color;
+        }
+        label {
+            font-size: 2rem;
+            color: $light-color;
+            cursor: pointer;
+            
+            &:hover{
+                color: $blue;
+            }
+        }
+    }
+    
+    .icons{
+        display: flex;
+    }
+    
+    .icons a,
+    .icons div{
+        // background-color: yellow;
+        font-size: 2.5rem;
+        margin-left: 2rem;
+        color: $white;
+
+        cursor: pointer;
+
+        &:hover{
+            color: $gold;
+        }
+
+    }
+
+
+}
+
+.home{
+    background-color: $white;
+
+    .slide{
+        min-height: 40rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 2rem;
+
+        padding: 2rem 0;
+
+
+        .image{
+            flex: 1 1 42rem;
+            text-align: center;
+
+            img{
+                height: 70rem;
+            }
+        }
+
+        .contact{
+            flex: 1 1 42rem;
+
+            span{
+                font-size: 2rem;
+                color: $blue;
+            }
+            h3{
+                padding-top: 0.5rem;
+                color: $black;
+                font-size: 3rem;
+            }
+        }
+    }
+}
+
+// 🥒js0432 - swiper 
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 3rem;
+  color: $black;
+}
