@@ -121,11 +121,11 @@ getFakeStore();
 
 const boxContainer = document.querySelector('.products .box-container');
 function renderProducts() {
-    renderProducts_insid(dataProducts);
+    renderProducts_inside(dataProducts);
     
 }
 
-function renderProducts_insed(p) {
+function renderProducts_inside(p) {
 
     boxContainer.innerHTML = ``;
     p.forEach((p_product)=>{
@@ -149,6 +149,115 @@ function renderProducts_insed(p) {
             </div>
         </div>
     `  ;
-    });
+    });``
     
 }
+
+
+// 🍀 js704. category.....................🍚
+
+const allElm = document.querySelector('.category .all');
+const menElm= document.querySelector('.category .men');
+const womenElm= document.querySelector('.category .women');
+const jewelryElm= document.querySelector('.category .jewelry');
+const electronicElm= document.querySelector('.category .electronic');
+
+allElm.addEventListener('click',()=>{
+    renderProducts_inside(dataProducts);
+});
+menElm.addEventListener('click',()=>{    
+    renderProducts_inside(dataProductsMen);
+});
+
+womenElm.addEventListener('click',()=>{    
+    renderProducts_inside(dataProductsWomen);
+});
+
+jewelryElm.addEventListener('click',()=>{    
+    renderProducts_inside(dataProductsJ);
+});
+
+electronicElm.addEventListener('click',()=>{    
+    renderProducts_inside(dataProductsE);
+});
+
+
+// js13 addtocart n umber of unit
+
+function addToCart(p_id) {
+
+    Toast();
+
+    console.log(cart)
+
+    if (cart.some((pp_item)=> pp_item.id ===p_id)) {
+
+        
+        changeNumberOfUnits('plus',p_id);
+    } else {
+        const item = dataProducts.find((pp_product)=> pp_product.id === p.id);
+
+        console.log(item)
+
+
+        cart.push(
+            {
+                ...item,
+                numberOfUnits:1,
+            }
+        )
+        
+    }
+
+    updateCart();
+    
+}
+
+function updateCart() {   
+    localStorage.setItem('CART', JSON.stringify(cart));
+
+    console.log(cart)
+}
+updateCart();
+
+
+// js28
+
+function changeNumberOfUnits(p_action, p_id) {   
+
+    cart= cart.map((p_item)=>{
+        let numberOfUnits = p_item.numberOfUnits;
+
+        if (p_item.id ===p_id) {
+
+            if (p_action ===  "minus" && numberOfUnits > 1) {
+
+                numberOfUnits--;
+                
+            } else if (p_action === "plus" && numberOfUnits < p_item.inStock) {
+                numberOfUnits ++;
+                
+            } else if (p_action ==="plus" && numberOfUnits === p_item.inStock) {
+
+                alert(`sorry, it's outt of stock1`);
+                
+            }
+            
+        }
+
+        return {
+            ...p_item,
+            numberOfUnits:numberOfUnits,
+        }
+    })
+    updateCart();
+}
+
+
+// locarstorage.fa-circle-arrow-down
+const deleteAllBtn = document.querySelector('.delete-all-btn');
+
+deleteAllBtn.addEventListener('click',()=>{
+    localStorage.clear();
+    location.reload();
+});
