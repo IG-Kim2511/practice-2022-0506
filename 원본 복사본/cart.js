@@ -62,7 +62,6 @@ function renderCartItems() {
 
 
 
-
 // 🥨 products.js  - 🍀js13-40.update Cart  
 
 function updateCart_onCart() {
