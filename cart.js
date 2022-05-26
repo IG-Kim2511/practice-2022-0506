@@ -65,7 +65,7 @@ function updateCart_onCart() {
 updateCart_onCart();
 
 
-// 👉products.js
+// 👉products.js -js28
 
 function changeNumberOfUnits(p_action,p_id) {
 
@@ -74,19 +74,68 @@ function changeNumberOfUnits(p_action,p_id) {
         let numberOfUnits = p_item.numberOfUnits;
 
         if (p_item.id === p_id) {
+
+            if (p_action ===  "minus" && numberOfUnits > 1) {
+
+                numberOfUnits--;
+                
+            } else if (p_action ===  "plus" && numberOfUnits <  p_item.inStock) {
+
+                numberOfUnits++;
+                
+            }else if(p_action ==="plus" && numberOfUnits ===p_item.inStock){
+                alert(`sorry. it's out of stock.`);                
+            }  
             
         }
 
+        return{
+            ...p_item,
+            numberOfUnits:numberOfUnits,
+        }
 
 
 
     }
 
     );
+    updateCart_onCart();
     
 }
 
 
+function renderSubtotal() {
+    let subTotalPrice = 0;
+    let tax = 0;
+    let totalPrice = 0;
+    let totalNumber = 0;
+
+    cart.forEach(()=>{
+        subTotalPrice += pp_item.price * pp_item.numberOfUnits
+
+        tax += pp_item.price * pp_item.numberOfUnits/10 
+        totalPrice+= (pp_item.price * pp_item.numberOfUnits) +(pp_item.price * pp_item.numberOfUnits / 10)
+
+        totalNumber+= pp_item.numberOfUnits;
+    });
+    
+
+    subTotalElm.innerHTML = `${subTotalPrice.toFixed(2)}`;
+    taxElm.innerHTML= `${tax.toFixed(2)}`
+    totalElm.innerHTML = `${totalPrice.toFixed(2)}`;
+    
+    numberOfItemsElm.innerHTML = `${totalNumber}`;
+
+}
+
+
+// js41.remove fa-intercom
+function removeItemFromCart(p_id) {
+
+    cart = cart.filter(pp_item->pp_item.id !==p_id)
+    updateCart_onCart();
+    
+}
 
 
 
